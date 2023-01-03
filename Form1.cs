@@ -41,12 +41,31 @@ namespace BingImageGetter
         {
             button3.Enabled = false;
             timer1.Enabled = true;
-            toolStripStatusLabel1.Text= DateTime.Now.ToLocalTime().ToString();
+            toolStripStatusLabel1.Text = DateTime.Now.ToLocalTime().ToString();
         }
 
         private void 退出ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Environment.Exit(0);
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Dao dao= new Dao();
+            log(dao.Insert("1", "3", "dd", "ddd", "dddd", "dddddd", "dddddd").ToString());
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            toolStripStatusLabel1.Text = DateTime.Now.ToLocalTime().ToString();
+        }
+
+        public void log(string txt)
+        {
+            string logs= "["+DateTime.Now.ToLocalTime().ToString()+"]";
+            logs += txt;
+            logs+= Environment.NewLine;
+            textBox1.AppendText(logs);
         }
     }
 }
